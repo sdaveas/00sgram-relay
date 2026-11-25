@@ -1,0 +1,27 @@
+services:
+  relay:
+    build: .
+    image: 00sgram-relay:local
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # Inside compose the app is reached by its service name, on its network.
+      API_URL: http://web:8080
+    networks: [app]
+    volumes: [relay:/data]
+
+networks:
+  app:
+    # The app's compose project, joined from outside. Both repos stay separate:
+    # neither has to know the other's file, and the relay is reachable to the
+    # app (and vice versa) by service name exactly as before the split.
+    external: true
+    name: 00sgram_default
+
+volumes:
+  relay:
+    # The volume the relay has been using since it was a second service in the
+    # app's compose file: keeping the name is what keeps the topic mapping, the
+    # watermarks and the outbox cursor. A new name would adopt the inbox again
+    # and make a second topic per conversation.
+    name: 00sgram_relay
