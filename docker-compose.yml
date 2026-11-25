@@ -4,6 +4,9 @@ name: 00sgram-tg-ig
 
 services:
   relay:
+    # A fixed name, not the project's `<project>-<service>-1`: the app's family
+    # of relayers are addressed as 00sgram-tg-relayer, 00sgram-tg-wa-relayer.
+    container_name: 00sgram-tg-relayer
     build: .
     image: 00sgram-tg-ig-relay:local
     restart: unless-stopped
