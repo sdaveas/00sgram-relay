@@ -1,7 +1,11 @@
+# One relayer of several: Telegram <-> Instagram. A sibling (tg-wa-relayer,
+# ...) would copy this file and change the volume, never this one.
+name: 00sgram-tg-ig
+
 services:
   relay:
     build: .
-    image: 00sgram-relay:local
+    image: 00sgram-tg-ig-relay:local
     restart: unless-stopped
     env_file: .env
     environment:
@@ -20,8 +24,8 @@ networks:
 
 volumes:
   relay:
-    # The volume the relay has been using since it was a second service in the
-    # app's compose file: keeping the name is what keeps the topic mapping, the
-    # watermarks and the outbox cursor. A new name would adopt the inbox again
-    # and make a second topic per conversation.
-    name: 00sgram_relay
+    # Deliberately not the project's default name: this volume predates the
+    # split, and keeping its contents is what keeps the topic mapping, the
+    # watermarks and the outbox cursor. A new empty volume would adopt the inbox
+    # again and make a second topic per conversation.
+    name: 00sgram_tg_ig_relay

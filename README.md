@@ -1,4 +1,4 @@
-# 00sgram-relay
+# tg-ig-relayer
 
 An addon for **[00sgram](https://github.com/sdaveas/00sgram)**: Instagram DMs,
 relayed into one Telegram forum topic per conversation — and back.
@@ -37,7 +37,7 @@ docker compose up -d --build
 ```
 
 The compose file joins the app's network (`00sgram_default`) and mounts the
-volume `00sgram_relay` — both external on purpose, so reachability and state
+volume `00sgram_tg_ig_relay` — both external on purpose, so reachability and state
 survive changes to either repo. The app is expected to be up as `web`.
 
 ## Migrating from the in-process relay
