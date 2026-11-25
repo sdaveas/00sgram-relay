@@ -1,7 +1,9 @@
 # 00sgram-relay
 
-Instagram DMs, relayed into one Telegram forum topic per conversation — and back.
-It is a **client of the 00sgram app**: it owns no Instagram session, no browser
+An addon for **[00sgram](https://github.com/sdaveas/00sgram)**: Instagram DMs,
+relayed into one Telegram forum topic per conversation — and back.
+
+It is a **client of the app**: it owns no Instagram session, no browser
 and no message store. It asks the app over HTTP what arrived, posts each new
 message into that conversation's Telegram topic, polls Telegram for what you
 typed, and posts it back. Its own SQLite holds only what the relay must
